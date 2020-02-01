@@ -1,0 +1,64 @@
+#defining Calculating functions for future use
+
+def add(num1, num2):
+    return num1 + num2
+def sub(num1, num2):
+    return num1 - num2
+def mul(num1, num2):
+    return num1 * num2
+def div(num1, num2):
+#preventing code from srashing when dividing by 0
+    try:
+        return num1 / num2
+    except ZeroDivisionError:
+        print('Can\'t Divide By Zero')
+        return 0
+def exp(num1, num2):
+    return num1 ** num2
+#main function in code
+def main():
+#nested try loop to keep the calculator running until the
+#user wants it to terminate
+    user_continue = True
+    while user_continue:
+        valid_input = False
+        while not valid_input:
+            try:
+                 print('Calculator Options: Add, Subtract, Divide, Multiply, Exponentiate')
+                 num1 = float(input('What Is The First Number?'))
+                 num2 = float(input('What Is The Second Number?'))
+                 operation = int(input(
+                     "To Add, Press 1. To Subtract, Press 2. To Multiply, Press 3. To Divide, Press 4. Exponent, Press 5."))
+                 valid_input = True
+            except ValueError:
+                 print("Invalid Input, Try Again")
+            except:
+                print('Unknown Error')
+        #Telling the code what calculating function to use according to user input
+        if   operation == 1:
+            print('Adding...')
+            print(add(num1, num2))
+        elif operation == 2:
+            print('Subtracting...')
+            print(sub(num1, num2))
+        elif operation == 3:
+            print('Multiplying...')
+            print(mul(num1, num2))
+        elif operation == 4:
+            print('Dividing...')
+            print(div(num1, num2))
+        elif operation == 5:
+            print('Exponent')
+            print(exp(num1, num2))
+        else:
+            print('Invalid Entry')
+#let the user decide if he wants the program to continue or terminate
+        user_yn = int(input('To Calculate Again Enter 1, To Quit enter any other number'))
+        if user_yn != 1:
+            user_continue = False
+            print('See Ya Soon!')
+            break
+        else:
+            continue
+
+main()
